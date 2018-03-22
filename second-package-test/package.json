@@ -1,12 +1,44 @@
 {
-  "name": "second-package-test",
-  "version": "1.0.0",
-  "description": "",
+  "name": "sp-test",
+  "version": "0.0.0-development",
   "main": "index.js",
+  "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "commit": "git-cz",
+    "test": "jest",
+    "s": "semantic-release-cli setup",
+    "semantic-release": "semantic-release -e semantic-release-monorepo",
+    "travis-deploy-once": "travis-deploy-once"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "devDependencies": {
+    "semantic-release": "^15.0.2",
+    "semantic-release-cli": "^3.6.3",
+    "semantic-release-monorepo": "^6.0.0",
+    "travis-deploy-once": "^4.4.0"
+  },
+  "release": {
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ],
+    "prepare": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "@semantic-release/changelog": "^2.0.1",
+    "@semantic-release/git": "^4.0.1",
+    "@semantic-release/npm": "^3.2.2",
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.1.0",
+    "jest": "^22.4.2"
+  }
 }
